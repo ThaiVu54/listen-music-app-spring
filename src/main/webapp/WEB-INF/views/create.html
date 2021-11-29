@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AA new track</title>
 </head>
 <body>
+<h1>Add new track</h1>
+<p>
+    <a th:href="@{/tracks}">Back to list</a>
+</p>
+<form th:action="@{/save}" th:object="${track}" method="post" novalidate="novalidate" enctype="multipart/form-data">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}"/>
+    </div>
+    <div>
+        <label for="link">Link:</label>
+        <input type="file" id="link" accept=".mp3,.wav,.mp3,.raw,.ogg,.aiff,.wma" th:field="*{link}"/>
+    </div>
+    <input type="submit" value="Create">
 
+</form>
 </body>
 </html>
