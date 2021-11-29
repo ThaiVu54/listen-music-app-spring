@@ -9,7 +9,7 @@ public class TrackSave {
 
     public TrackSave(String name, MultipartFile link) {
         this.name = name;
-        this.link = link;
+        this.link = link;       
     }
 
     public Long getId() {
