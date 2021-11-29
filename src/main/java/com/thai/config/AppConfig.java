@@ -1,5 +1,7 @@
 package com.thai.config;
 
+import com.thai.service.ITrackService;
+import com.thai.service.TrackService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -66,5 +68,9 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
         resolver.setMaxUploadSizePerFile(52428800);
         return resolver;
+    }
+    @Bean
+    public ITrackService trackService(){
+        return new TrackService();
     }
 }
