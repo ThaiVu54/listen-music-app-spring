@@ -19,6 +19,12 @@ public class Track {
         this.link = link;
     }
 
+    public Track(Long id, String name, String link) {
+        this.id = id;
+        this.name = name;
+        this.link = link;
+    }
+
     public Long getId() {
         return id;
     }

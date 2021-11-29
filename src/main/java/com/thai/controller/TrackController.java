@@ -76,12 +76,25 @@ public class TrackController {
         return modelAndView;
     }
 
-//    @PostMapping("/edit")
-//    public ModelAndView edit(@ModelAttribute TrackSave trackSave) throws IOException {
-//        MultipartFile multipartFile = trackSave.getLink();
-//        String fileName = multipartFile.getOriginalFilename();
-//        FileCopyUtils.copy(trackSave.getLink().getBytes(),new File(fileUpload+fileName));
-//        Track track = new Track(trackSave.getId(),trackSave.getName(),fileName);
-//    }
+    @PostMapping("/edit")
+    public ModelAndView edit(@ModelAttribute TrackSave trackSave) throws IOException {
+        MultipartFile multipartFile = trackSave.getLink();
+        String fileName = multipartFile.getOriginalFilename();
+        FileCopyUtils.copy(trackSave.getLink().getBytes(),new File(fileUpload+fileName));
+        Track track = new Track(trackSave.getId(),trackSave.getName(),fileName);
+        trackService.update(track);
+        ModelAndView modelAndView = new ModelAndView("/list");
+        List<Track>tracks = trackService.findAll();
+        modelAndView.addObject("tracks",tracks);
+        return modelAndView;
+    }
 
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleleTrack(@PathVariable Long id){
+        trackService.remove(id);
+        ModelAndView modelAndView = new ModelAndView("/list");
+        List<Track>tracks= trackService.findAll();
+        modelAndView.addObject("tracks",tracks);
+        return modelAndView;
+    }
 }
