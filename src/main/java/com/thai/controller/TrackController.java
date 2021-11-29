@@ -72,6 +72,7 @@ public class TrackController {
         File file = new File(fileUpload + track.getLink());
         FileInputStream fileInputStream = new FileInputStream(file);
         MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "audio", IOUtils.toByteArray(fileInputStream));
+        trackSave.setLink(multipartFile);
         modelAndView.addObject("trackSave", trackSave);
         return modelAndView;
     }

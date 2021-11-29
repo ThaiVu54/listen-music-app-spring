@@ -26,8 +26,8 @@
         <td><audio controls>
             <source th:src="@{'/track/' + ${track.getLink()}}">
         </audio></td>
-        <td><a th:href="@{/track/{id}/edit(id=${track.id})}">Edit</a> </td>
-        <td><a th:href="@{/track/{id}/delete(id=${track.id})}">Delete</a> </td>
+        <td><a th:href="@{/tracks/edit/{id}(id=${track.id})}">Edit</a> </td>
+        <td><a th:href="@{/tracks/delete/{id}(id=${track.id})}">Delete</a> </td>
     </tr>
     </tbody>
 </table>

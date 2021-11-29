@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit track</title>
 </head>
 <body>
-
+<h1>Edit Track</h1>
+<p>
+    <a th:href="@{/tracks}">Back to list</a>
+</p>
+<form th:action="@{/edit}" th:object="${trackSave}" method="post" novalidate="novalidate" enctype="multipart/form-data">
+    <div>
+        <input type="hidden" th:field="*{id}" th:value="${trackSave.id}"/>
+    </div>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" th:field="*{name}" id="name" th:value="${trackSave.name}"/>
+    </div>
+    <div>
+        <label for="link">LinK:</label>
+        <p th:text="${trackSave.link.getOriginalFilename()}"></p>
+        <input id="link" type="file" accept=".mp3,.wav,.mp3,.raw,.ogg,.aiff,.wma" th:field="*{link}"/>
+    </div>
+    <input type="submit" th:value="Edit">
+</form>
 </body>
 </html>
